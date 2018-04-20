@@ -38,12 +38,11 @@ for i in HOST:
         if password:
             tn.read_until('Password:')
             tn.write(password + '\n')
-	for l in range(1,6):
             tn.write('configure\n')
-            tn.write('set interfaces lo0 unit' + str(l) + 'family inet address ' + str(l) + '.' + str(l) + '.' + str(l) + '.' + str(l) + '/32\n')
+	for l in range(1,6):
+            tn.write('set interfaces lo0 unit 0 family inet address ' + str(l) + '.' + str(l) + '.' + str(l) + '.' + str(l) + '/32\n')
         tn.write('commit and-quit\n')
         tn.write('exit\n')
-
         print tn.read_all()
 
     elif i is '172.16.126.141':
